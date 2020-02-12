@@ -10,5 +10,9 @@ func main() {
 
 // Hello says hi
 func Hello(name string) string {
-	return "hello, " + name
+	if name == "" {
+		return "hi, you!"
+	} else {
+		return "hello, " + name
+	}
 }
