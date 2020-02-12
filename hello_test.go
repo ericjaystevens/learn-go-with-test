@@ -13,15 +13,18 @@ func TestHello(t *testing.T) {
 		}
 	}
 	t.Run("Say hello based on name", func(t *testing.T) {
-		got := Hello("eric")
-		want := "hello, eric"
+		got := Hello("eric", "")
+		want := "Hello, eric"
 		assertCorrect(t, got, want)
 	})
 	t.Run("Say hello without on name", func(t *testing.T) {
-		got := Hello("")
-		want := "hi, you!"
+		got := Hello("", "")
+		want := "Hello, you"
 		assertCorrect(t, got, want)
-
 	})
-
+	t.Run("Say hello without on name", func(t *testing.T) {
+		got := Hello("eric", "spanish")
+		want := "Hola, eric"
+		assertCorrect(t, got, want)
+	})
 }
