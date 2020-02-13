@@ -25,3 +25,13 @@ func SumAll(numbers ...[]int) []int{
 	}
 	return sums
 }
+func SumAllTails(numbers ...[]int) (sums int){
+	for _, number := range numbers{
+		lastPosition := len(number) - 1
+		if lastPosition > 0 {
+			lastNumber := number[lastPosition]
+			sums += lastNumber
+		} 
+	}
+	return sums
+}
