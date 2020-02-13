@@ -3,6 +3,7 @@ package integers
 import(
 	"testing"
 	"fmt"
+	"reflect"
 )
 
 func TestAdder(t *testing.T){
@@ -21,10 +22,22 @@ func ExampleAdder(){
 }
 
 func TestSum(t *testing.T){
-	numbers := [3]int{1,2,3}
+	numbers := []int{1,2,3}
 	got := Sum(numbers)
 	want := 6
 	if got != want {
+		t.Errorf("got: %d, wanted: %d", got, want)
+	}
+}
+
+func TestSumAll(t *testing.T){
+	sliceA := []int{1,2,3}
+	sliceB := []int{2,2,1}
+
+	got := SumAll(sliceA, sliceB)
+	want := []int{6,5}
+
+	if !reflect.DeepEqual(got,want) {
 		t.Errorf("got: %d, wanted: %d", got, want)
 	}
 }

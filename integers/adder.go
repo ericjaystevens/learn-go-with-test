@@ -9,11 +9,19 @@ func Adder(x int, y int) int{
 	return sum
 }
 
-func Sum(numbers [3]int) (sum int){
+func Sum(numbers []int) (sum int){
 	
 	for i := range numbers {
 		sum += numbers[i]	
 	}
 
 	return
+}
+
+func SumAll(numbers ...[]int) []int{
+	var sums []int
+	for _, number := range numbers{
+		sums = append(sums, Sum(number))
+	}
+	return sums
 }
