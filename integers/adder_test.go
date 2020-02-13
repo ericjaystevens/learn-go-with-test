@@ -19,3 +19,12 @@ func ExampleAdder(){
 	fmt.Println(got)
 	// output: 5
 }
+
+func TestSum(t *testing.T){
+	numbers := [3]int{1,2,3}
+	got := Sum(numbers)
+	want := 6
+	if got != want {
+		t.Errorf("got: %d, wanted: %d", got, want)
+	}
+}
