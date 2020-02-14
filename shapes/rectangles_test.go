@@ -19,6 +19,28 @@ func TestPerRectangle(t *testing.T){
 }
 
 func TestArea(t *testing.T){
+	areaTests := []struct {
+		test string
+		shape Shape
+		want float64
+	}{
+		{ 
+			test : "simple circle area",
+			shape: Circle{ radius: 10.0},
+			want: 314.1592653589793,
+		},
+		{
+			test : "simple Rectangle area",
+			shape : Rectangle{width : 2.0,length : 2.0},
+			want : 4.0,
+		},
+		{
+			test : "simple triangle area",
+			shape : Triangle{width : 12,height : 6},
+			want : 36,
+		},
+	}
+
 	getArea := func(t *testing.T, shape Shape, want float64){
 		t.Helper()
 		got := shape.Area()
@@ -27,12 +49,10 @@ func TestArea(t *testing.T){
 			t.Errorf("got: %g, want %g", got,want)
 		}
 	}
-	t.Run("rectange", func(t *testing.T){
-		rec := Rectangle{2.0,2.0}
-		getArea(t,rec,4.0)
-	})
-	t.Run("circle", func(t *testing.T){
-		cir := Circle{10.0}
-		getArea(t,cir,314.1592653589793)
-	})
+	for _, tt := range areaTests{
+
+		t.Run(tt.test, func(t *testing.T){
+			getArea(t,tt.shape,tt.want)
+		})
+	}
 } 

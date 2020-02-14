@@ -12,6 +12,15 @@ type Circle struct {
 	radius float64
 }
 
+type Triangle struct {
+	width float64
+	height float64
+}
+
+func (t Triangle) Area() (area float64){
+	return t.height * t.width * .5
+}
+
 // PerRectangle returnts the perimeter of a rectangel based on length and height
 func (r Rectangle )PerRectangle() (perimter float64){
 	perimter = 2 * r.width + 2 * r.length
