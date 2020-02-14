@@ -41,18 +41,13 @@ func TestArea(t *testing.T){
 		},
 	}
 
-	getArea := func(t *testing.T, shape Shape, want float64){
-		t.Helper()
-		got := shape.Area()
-
-		if got != want {
-			t.Errorf("got: %g, want %g", got,want)
-		}
-	}
 	for _, tt := range areaTests{
-
 		t.Run(tt.test, func(t *testing.T){
-			getArea(t,tt.shape,tt.want)
+			got := tt.shape.Area()
+
+			if got != tt.want {
+				t.Errorf("failed when running %#v got: %g, want %g", tt.shape, got,tt.want)
+			}
 		})
 	}
 } 
